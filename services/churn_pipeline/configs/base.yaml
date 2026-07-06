@@ -1,0 +1,15 @@
+data_ingestion:
+  raw_data_path: data/raw/churn_data.csv
+  interim_train_path: data/interim/train.csv
+  interim_test_path: data/interim/test.csv
+  test_size: 0.2
+data_validation:
+  expected_columns: ['days_active', 'support_tickets', 'tier', 'has_churned']
+model_trainer:
+  target_column: has_churned
+  hyperparameters:
+    n_estimators: 300
+    max_depth: 5
+    learning_rate: 0.05
+model_evaluation:
+  expected_f1_score: 0.75

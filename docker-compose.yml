@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.2
+    command: mlflow server --host 0.0.0.0 --port 5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+
+  api:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.api
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=local
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    volumes:
+      - ./services/api:/app/services/api
+    depends_on:
+      - mlflow
+
+  rag-bot:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.rag
+    environment:
+      - ENVIRONMENT=local
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - api

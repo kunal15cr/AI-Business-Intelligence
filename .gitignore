@@ -1,0 +1,14 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+uv.lock
+*.json
+# DVC & MLflow
+.dvc/config.local
+mlruns/
+mlflow.db
+services/*/data/raw/*
+services/*/data/interim/*
+services/*/data/processed/*
+services/*/artifacts/*
