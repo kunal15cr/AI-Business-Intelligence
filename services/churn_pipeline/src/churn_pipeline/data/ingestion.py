@@ -1,7 +1,9 @@
-import pprint
+from churn_pipeline.Core.io import read_yaml
 
-from churn_pipeline.config_manager.settings import settings
-from churn_pipeline.exception.exception import DataValidationError
-from churn_pipeline.logging.logging import get_logger, set_correlation_id, set_customer_context
+from churn_pipeline.data.ingestion import DataIngestion 
+
+
+
+
 
 

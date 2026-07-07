@@ -23,6 +23,28 @@ class CIPBaseException(Exception):
     def __str__(self) -> str:
         return f"[{self.error_code}] {self.message} (Payload: {self.payload})"
 
+
+class CIPGenericError(CIPBaseException):
+    """
+    A single, flexible exception that can be used anywhere in the codebase.
+    Instead of making new classes, simply pass a different `error_code` 
+    and pass any extra details as keyword arguments (**kwargs).
+    """
+    def __init__(
+        self, 
+        message: str, 
+        error_code: str = "SYSTEM_ERROR", 
+        status_code: int = 500,
+        **kwargs  
+    ):
+        super().__init__(
+            message=message,
+            error_code=error_code,
+            status_code=status_code,
+            payload=kwargs
+        )
+
+
 # --- Data Domain Exceptions ---
 
 class DataValidationError(CIPBaseException):
@@ -35,6 +57,40 @@ class DataValidationError(CIPBaseException):
             payload={"missing_columns": missing_columns}
         )
 
+class DataIngestionError(CIPBaseException):
+    """Raised when source data cannot be found, read, or parsed."""
+    def __init__(self, message: str, filepath_or_query: str):
+        super().__init__(
+            message=message,
+            error_code="DATA_INGESTION_FAILED",
+            status_code=500,
+            payload={"source": filepath_or_query}
+        )
+
+class DataExtractionError(CIPBaseException):
+    """
+    Raised when a specific sub-step of data extraction fails 
+    (e.g., downloading from a URL, querying an API, unzipping a file).
+    """
+    def __init__(
+        self, 
+        message: str, 
+        step_name: str, 
+        target_source: str, 
+        original_error: str | None = None
+    ):
+        super().__init__(
+            message=message,
+            error_code="DATA_EXTRACTION_FAILED",
+            status_code=502,
+            payload={
+                "failed_step": step_name,
+                "target_source": target_source,
+                "system_error": original_error
+            }
+        )
+
+
 # --- Machine Learning Domain Exceptions ---
 
 class ModelNotTrainedError(CIPBaseException):
@@ -45,19 +101,6 @@ class ModelNotTrainedError(CIPBaseException):
             error_code="MODEL_NOT_TRAINED",
             status_code=400,
             payload={"model_name": model_name}
-            
-        )
-
-# In packages/common_config/src/common_config/exceptions.py
-
-class DataIngestionError(CIPBaseException):
-    """Raised when source data cannot be found, read, or parsed."""
-    def __init__(self, message: str, filepath_or_query: str):
-        super().__init__(
-            message=message,
-            error_code="DATA_INGESTION_FAILED",
-            status_code=500,
-            payload={"source": filepath_or_query}
         )
 
 class DataDriftDetectedError(CIPBaseException):
@@ -69,6 +112,7 @@ class DataDriftDetectedError(CIPBaseException):
             status_code=409,
             payload={"drift_score": drift_score, "threshold": threshold}
         )
+
 
 # --- Agentic/LLM Exceptions ---
 
