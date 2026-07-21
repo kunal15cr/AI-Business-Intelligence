@@ -1,7 +1,19 @@
-from churn_pipeline.Core.io import read_yaml
+import sys
 
-from churn_pipeline.data.ingestion import DataIngestion 
+from pprint import pprint
 
+
+
+from churn_pipeline.exception.base import ChurnException
+from churn_pipeline.config_manager.settings import settings
+
+
+pprint(settings.database_url)
+
+try:
+     a= 10 /0
+except ChurnException as e:
+    pprint(f"Error reading config file: {e}")
 
 
 
