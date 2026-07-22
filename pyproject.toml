@@ -1,7 +1,15 @@
 [project]
 name = "ai-business-intelligence"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "packages/common_config",
+    "packages/common_exceptions",
+    "services/*"
+]
+
+[tool.uv.sources]
+common-config = { workspace = true }
+common-exceptions = { workspace = true }
