@@ -1,18 +1,28 @@
 [project]
-name = "churn-pipeline"
+name = "ai-business-intelligence-churn-pipeline"
 version = "0.1.0"
 description = "Churn pipeline service"
 requires-python = ">=3.12"
 
 dependencies = [
+    "common-exceptions",
+    "common-config",
+
     "pandas",
     "numpy",
     "scikit-learn",
     "pydantic",
+<<<<<<< HEAD
     "pydantic-settings",
     "common-exceptions",
     "common-logging",
+=======
+    "pydantic-settings"
+>>>>>>> 6cb085790f1e84c507e530b2162f12ed35fe840b
 ]
+
+[tool.uv.sources]
+common-exceptions = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

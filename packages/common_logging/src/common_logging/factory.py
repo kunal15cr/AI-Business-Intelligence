@@ -48,3 +48,39 @@ def configure_logging(
                 "()": structlog.stdlib.ProcessorFormatter,
                 "processors": [structlog.processors.JSONRenderer()],
             },
+<<<<<<< HEAD
+=======
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "console_formatter",
+                "stream": "ext://sys.stdout",
+            }
+        },
+        "loggers": {
+            "": {  # Root logger
+                "handlers": ["console"],
+                "level": level.upper(),
+            }
+        }
+    }
+
+    # 4. Conditionally add the File Handler for local development
+    if enable_file_logging:
+        os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
+        logging_config["handlers"]["file"] = {
+            "class": "logging.handlers.RotatingFileHandler", # Rotates by size[cite: 9]
+            "formatter": "json_formatter",
+            "filename": log_file_path,
+            "maxBytes": 10485760,  # 10 MB per file
+            "backupCount": 3,      # Keep 3 backup files
+        }
+        logging_config["loggers"][""]["handlers"].append("file")
+
+    # Apply the configuration
+    logging.config.dictConfig(logging_config)
+    
+    # Bind the service name globally to all logs[cite: 9]
+    structlog.contextvars.bind_contextvars(service=service_name)
+>>>>>>> 6cb085790f1e84c507e530b2162f12ed35fe840b

@@ -24,4 +24,8 @@ class ConfigurationError(InfrastructureException):
 
     error_code = "CONFIG_001"
 
+<<<<<<< HEAD
     retryable = False
+=======
+    retryable = False
+>>>>>>> 6cb085790f1e84c507e530b2162f12ed35fe840b

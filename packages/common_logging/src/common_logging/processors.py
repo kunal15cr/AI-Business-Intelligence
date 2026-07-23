@@ -16,4 +16,8 @@ def make_redactor(extra_keys: set[str] = None):
                 event_dict[key] = "***REDACTED***"
         return event_dict
     
+<<<<<<< HEAD
     return redact
+=======
+    return redact
+>>>>>>> 6cb085790f1e84c507e530b2162f12ed35fe840b

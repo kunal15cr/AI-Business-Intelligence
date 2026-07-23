@@ -1,15 +1,17 @@
 [project]
 name = "ai-business-intelligence"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.12"
+<<<<<<< HEAD
 dependencies = []
+=======
+>>>>>>> 6cb085790f1e84c507e530b2162f12ed35fe840b
 
 [tool.uv.workspace]
 members = [
     "packages/common_config",
     "packages/common_exceptions",
+<<<<<<< HEAD
     "packages/common_logging",
     "services/api",
     "services/churn_pipeline",
@@ -21,3 +23,11 @@ members = [
 common-exceptions = { workspace = true }
 common-logging = { workspace = true }
 common-config = { workspace = true }
+=======
+    "services/*"
+]
+
+[tool.uv.sources]
+common-config = { workspace = true }
+common-exceptions = { workspace = true }
+>>>>>>> 6cb085790f1e84c507e530b2162f12ed35fe840b
