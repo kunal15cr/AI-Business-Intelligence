@@ -1,0 +1,18 @@
+[project]
+name = 'common-logging'
+version = '0.1.0'
+dependencies = [
+    "structlog",
+    "python-json-logger",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["common_logging"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+

@@ -5,3 +5,19 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "packages/common_config",
+    "packages/common_exceptions",
+    "packages/common_logging",
+    "services/api",
+    "services/churn_pipeline",
+    "services/clv_pipeline",
+    "services/rag_chatbot",
+]
+
+[tool.uv.sources]
+common-exceptions = { workspace = true }
+common-logging = { workspace = true }
+common-config = { workspace = true }

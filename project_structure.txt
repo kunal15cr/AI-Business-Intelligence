@@ -1,0 +1,104 @@
+
+├── deploy
+│   └── docker
+│       ├── Dockerfile.api
+│       └── Dockerfile.rag
+├── packages
+│   ├── common_config
+│   │   └── pyproject.toml
+│   ├── common_exceptions
+│   │   ├── src
+│   │   │   ├── common_exceptions
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── error_codes.py
+│   │   │   │   └── infrastructure_exceptions.py
+│   │   │   ├── common_exceptions.egg-info
+│   │   │   │   ├── dependency_links.txt
+│   │   │   │   ├── PKG-INFO
+│   │   │   │   ├── SOURCES.txt
+│   │   │   │   └── top_level.txt
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── error_codes.py
+│   │   │   └── infrastructure_exceptions.py
+│   │   ├── __init__.py
+│   │   └── pyproject.toml
+│   ├── common_logging
+│   │   ├── src
+│   │   │   └── common_logging
+│   │   │       ├── __init__.py
+│   │   │       ├── factory.py
+│   │   │       └── processors.py
+│   │   ├── __init__.py
+│   │   ├── factory.py
+│   │   ├── processors.py
+│   │   └── pyproject.toml
+│   └── __init__.py
+├── services
+│   ├── api
+│   │   ├── src
+│   │   │   └── api
+│   │   │       └── router.py
+│   │   └── pyproject.toml
+│   ├── churn_pipeline
+│   │   ├── configs
+│   │   │   └── base.yaml
+│   │   ├── notebooks
+│   │   │   └── 01_data_ingation.ipynb
+│   │   ├── src
+│   │   │   ├── churn_pipeline
+│   │   │   │   ├── config_manager
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── config.py
+│   │   │   │   │   └── settings.py
+│   │   │   │   ├── Core
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── io.py
+│   │   │   │   ├── data
+│   │   │   │   │   ├── ingestion.py
+│   │   │   │   │   └── validation.py
+│   │   │   │   ├── exception
+│   │   │   │   │   ├── base.py
+│   │   │   │   │   ├── data.py
+│   │   │   │   │   ├── training.py
+│   │   │   │   │   └── validation.py
+│   │   │   │   ├── features
+│   │   │   │   │   └── transformations.py
+│   │   │   │   ├── logging
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── logging.py
+│   │   │   │   ├── models
+│   │   │   │   │   ├── evaluator.py
+│   │   │   │   │   └── trainer.py
+│   │   │   │   ├── pipelines
+│   │   │   │   │   └── training_pipeline.py
+│   │   │   │   └── __init__.py
+│   │   │   └── __init__.py
+│   │   ├── .gitignore
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── pyproject.toml
+│   │   └── README.md
+│   ├── clv_pipeline
+│   │   ├── src
+│   │   │   └── clv_pipeline
+│   │   │       └── pipelines
+│   │   │           └── training_pipeline.py
+│   │   └── pyproject.toml
+│   └── rag_chatbot
+│       ├── src
+│       │   └── rag_chatbot
+│       │       └── bot.py
+│       └── pyproject.toml
+├── .env.example
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .python-version
+├── docker-compose.yml
+├── main.py
+├── Makefile
+├── pyproject.toml
+├── README.md
+├── stracture.py
+└── uv.lock
