@@ -1,17 +1,17 @@
-import logging, logging.config
 import mlflow
-from services.churn_pipeline.src.churn_pipeline.config_manager.config import get_settings
-from common_config.logging_config import build_logging_config
+
+from churn_pipeline.config_manager.config import get_settings
 from churn_pipeline.data.ingestion import DataIngestion
 from churn_pipeline.data.validation import DataValidation
 from churn_pipeline.features.transformations import DataTransformation
-from churn_pipeline.models.trainer import ModelTrainer
+from churn_pipeline.logging.logging import configure_logging, get_logger
 from churn_pipeline.models.evaluator import ModelEvaluator
+from churn_pipeline.models.trainer import ModelTrainer
 
 if __name__ == "__main__":
     settings = get_settings()
-    logging.config.dictConfig(build_logging_config(settings.environment))
-    logger = logging.getLogger("churn_pipeline")
+    configure_logging(service_name="churn_pipeline", level="INFO", enable_file_logging=True)
+    logger = get_logger("churn_pipeline")
 
     # MLflow Setup
     mlflow.set_tracking_uri(settings.mlflow_tracking_uri)

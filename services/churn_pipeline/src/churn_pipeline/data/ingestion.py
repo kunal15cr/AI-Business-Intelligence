@@ -1,21 +1,20 @@
-import sys
+from __future__ import annotations
 
-from pprint import pprint
+import logging
+from pathlib import Path
 
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
+from churn_pipeline.exception.data import CorruptedDatasetError, DatasetNotFoundError
+from churn_pipeline.logging.logging import get_logger
 
-from churn_pipeline.exception.base import ChurnException
-from churn_pipeline.config_manager.settings import settings
-
-
-pprint(settings.database_url)
-
-try:
-     a= 10 /0
-except ChurnException as e:
-    pprint(f"Error reading config file: {e}")
+logger = get_logger(__name__)
 
 
-
+# Test usage example for logging in this file
+def test_logging() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s:%(name)s:%(message)s")
+    logger.info("This is a test log from ingestion.py")
 
 
