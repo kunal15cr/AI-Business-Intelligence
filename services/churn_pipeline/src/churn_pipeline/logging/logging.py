@@ -78,7 +78,6 @@ def get_logger(name: str) -> logging.Logger:
 
     logger = logging.getLogger(name)
     logger.setLevel(logging.getLogger().level)
-    logger.propagate = False
 
     if not any(isinstance(filter_obj, ContextFilter) for filter_obj in logger.filters):
         logger.addFilter(ContextFilter())
