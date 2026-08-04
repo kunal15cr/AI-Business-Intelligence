@@ -1,0 +1,12 @@
+# Production overrides
+# Higher model capacity and stricter quality gates for production deployments.
+# These values are deep-merged on top of base.yaml when ENVIRONMENT=production.
+
+model_trainer:
+  hyperparameters:
+    n_estimators: 500
+    max_depth: 7
+    learning_rate: 0.03
+
+model_evaluation:
+  expected_f1_score: 0.80

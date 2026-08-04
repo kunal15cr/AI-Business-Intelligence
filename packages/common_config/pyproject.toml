@@ -1,6 +1,18 @@
 [project]
 name = "common-config"
 version = "0.1.0"
+description = "Shared production-grade configuration management for all services"
+requires-python = ">=3.12"
+
+dependencies = [
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "pyyaml>=6.0",
+    "common-exceptions",
+]
+
+[tool.uv.sources]
+common-exceptions = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]

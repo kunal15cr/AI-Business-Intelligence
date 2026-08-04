@@ -1,0 +1,9 @@
+# Local development overrides
+# Fewer trees & shallower depth for fast iteration during development.
+# These values are deep-merged on top of base.yaml when ENVIRONMENT=local.
+
+model_trainer:
+  hyperparameters:
+    n_estimators: 50
+    max_depth: 3
+    learning_rate: 0.1
