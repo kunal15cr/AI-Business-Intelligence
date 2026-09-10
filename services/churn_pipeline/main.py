@@ -1,6 +1,6 @@
 """Main entry point for the churn pipeline service."""
 
-from churn_pipeline.config_manager import get_settings, secret_settings
+from churn_pipeline.config_manager import get_settings, churn_prediction_settings
 
 
 def main() -> None:
@@ -10,9 +10,9 @@ def main() -> None:
     print("=== CHURN PIPELINE: APPLICATION STARTED ===")
     print(f"Environment: {settings.environment}")
     print(f"MLflow URI: {settings.mlflow_tracking_uri}")
-    print(f"Database URL (masked): {secret_settings.database_url}")
+    print(f"Database URL (masked): {churn_prediction_settings.database_url}")
     # To get the real value (e.g. pass to SQLAlchemy), use:
-    # db_url = secret_settings.database_url.get_secret_value()
+    # db_url = churn_prediction_settings.database_url.get_secret_value()
 
     # Example of using config values
     trainer_config = settings.model_trainer

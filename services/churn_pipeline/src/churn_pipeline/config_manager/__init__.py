@@ -1,11 +1,9 @@
-"""Public API for the churn pipeline configuration manager."""
-
 from .config import ChurnSettings, get_settings
-from .settings import SecretSettings, secret_settings
+from .settings import ChurnPredictionSettings, churn_prediction_settings
 
 __all__ = [
     "ChurnSettings",
-    "SecretSettings",
+    "ChurnPredictionSettings",
     "get_settings",
-    "secret_settings",
+    "churn_prediction_settings",
 ]

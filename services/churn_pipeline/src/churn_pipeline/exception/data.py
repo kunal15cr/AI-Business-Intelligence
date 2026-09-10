@@ -17,3 +17,9 @@ class CorruptedDatasetError(DataException):
     error_code = "FILE_002"
 
     retryable = False
+
+class DataIngestionError(DataException):
+
+    error_code = "FILE_003"
+
+    retryable = True
